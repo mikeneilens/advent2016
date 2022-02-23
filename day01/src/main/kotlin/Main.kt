@@ -7,12 +7,7 @@ enum class Orientation { North, South, East, West;
         South -> West
         West -> North
     }
-    fun rotateLeft() = when(this) {
-        North -> West
-        West -> South
-        South -> East
-        East -> North
-    }
+    fun rotateLeft() = rotateRight().rotateRight().rotateRight()
 }
 
 data class Location(val x:Int = 0, val y:Int = 0, val orientation:Orientation = Orientation.North) {
@@ -39,9 +34,9 @@ fun String.toInstruction() = Instruction(first().toString(), drop(1).toInt())
 
 fun turnAndMove(locations:List<Location>, instruction:Instruction) = locations + locations.last().turn(instruction.direction).move(instruction.distance)
 
-fun List<Instruction>.calculateBlocks(locations:List<Location>) = fold(locations, ::turnAndMove)
+fun List<Instruction>.calculateBlocks(locations:List<Location> = listOf(Location())) = fold(locations, ::turnAndMove)
 
-fun partOne(data:String) = data.split(", ").map(String::toInstruction).calculateBlocks(listOf(Location())).last().manhattenDistance()
+fun partOne(data:String) = data.split(", ").map(String::toInstruction).calculateBlocks().last().manhattenDistance()
 
 data class Journey(val start:Location, val end:Location){
     fun xRange() = if (start.x == end.x) start.x..end.x else rangeOfValues(start.x, end.x)
