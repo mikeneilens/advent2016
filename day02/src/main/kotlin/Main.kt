@@ -5,7 +5,7 @@ val layoutP1 = """
         789
     """.trimIndent().split("\n")
 
-val moves = mapOf('U' to Position(0,-1), 'D' to Position(0,+1), 'L' to Position(-1,0), 'R' to Position(+1,0))
+val moves = mapOf('U' to Position(0, -1), 'D' to Position(0, +1), 'L' to Position(-1, 0), 'R' to Position(+1, 0))
 fun Char.toMoves() = moves.getValue(this)
 
 data class Position( val x:Int, val y:Int, val layout:List<String> = layoutP1) {
@@ -19,7 +19,7 @@ fun String.calcButton(start:Position = Position(1,1, layoutP1)) = map(Char::toMo
 
 fun partOne(data:List<String>, position:Position = Position(1,1, layoutP1)) =
       data.fold(listOf(position)) { positions, instructionText -> positions + instructionText.calcButton(positions.last()) }
-          .map{it.button}
+          .map(Position::button)
           .joinToString("")
           .drop(1)
 
