@@ -23,7 +23,7 @@ fun partOne(data:List<String>, position:Position = Position(1,1, keypadP1)) =
           .joinToString("")
           .drop(1)
 
-val keypad = """
+val keypadP2 = """
        ..1..
        .234.
        56789
@@ -31,7 +31,7 @@ val keypad = """
        ..D..
     """.trimIndent().replace('.',' ').split("\n")
 
-fun partTwo(data:List<String>) = partOne(data ,  Position(0,2, keypad))
+fun partTwo(data:List<String>) = partOne(data ,  Position(0,2, keypadP2))
 
 
 
