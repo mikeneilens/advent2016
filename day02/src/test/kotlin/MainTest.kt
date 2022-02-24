@@ -21,9 +21,9 @@ class MainTest: WordSpec ({
             Position(1,1) + Position(0, -2) shouldBe Position(1,1)
         }
         "button represented by each position" {
-            Position(1,1, layoutP1).button shouldBe '5'
-            Position(0,0, layoutP1).button shouldBe '1'
-            Position(2,2, layoutP1).button shouldBe '9'
+            Position(1,1, keypadP1).button shouldBe '5'
+            Position(0,0, keypadP1).button shouldBe '1'
+            Position(2,2, keypadP1).button shouldBe '9'
         }
         "Sequence ULL leads to button 1" {
             "ULL".calcButton().button shouldBe '1'
@@ -37,10 +37,10 @@ class MainTest: WordSpec ({
     })
     "when trying part two " should {
         "button represented by each position"{
-            Position(2,0, layoutP2).button shouldBe '1'
-            Position(0,2, layoutP2).button shouldBe '5'
-            Position(2,2, layoutP2).button shouldBe '7'
-            Position(2,4, layoutP2).button shouldBe 'D'
+            Position(2,0, keypad).button shouldBe '1'
+            Position(0,2, keypad).button shouldBe '5'
+            Position(2,2, keypad).button shouldBe '7'
+            Position(2,4, keypad).button shouldBe 'D'
         }
         "the sample data leads to number 5DB3" {
             partTwo(sampleData) shouldBe "5DB3"
