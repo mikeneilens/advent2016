@@ -15,7 +15,7 @@ data class Position( val x:Int, val y:Int, val keypad:List<String> = keypadP1) {
     val button = if (y in keypad.indices && x in 0 until keypad[y].length) keypad[y][x] else '.'
 }
 
-fun String.calcButton(start:Position = Position(1,1, keypadP1)) = map(Char::toMoves).fold(start){ position, move -> position + move}
+fun String.calcButton(startPosition:Position = Position(1,1, keypadP1)) = map(Char::toMoves).fold(startPosition,Position::plus)
 
 fun partOne(data:List<String>, position:Position = Position(1,1, keypadP1)) =
       data.fold(listOf(position)) { positions, instructionText -> positions + instructionText.calcButton(positions.last()) }
