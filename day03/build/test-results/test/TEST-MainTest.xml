@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-02-24T20:46:01" hostname="MacBook-Pro-2" time="0.043">
+  <properties/>
+  <testcase name="obtain number in each column of the string containing numbers" classname="MainTest" time="0.009"/>
+  <testcase name="convert string containing 541 588 421 into an ascending list of numbers" classname="MainTest" time="0.002"/>
+  <testcase name="list of 421, 541, 588 is a valid triangle" classname="MainTest" time="0.001"/>
+  <testcase name="list of 5, 10, 25 is not a valid triangle" classname="MainTest" time="0.001"/>
+  <testcase name="test with puzzle input" classname="MainTest" time="0.011"/>
+  <testcase name="convert vertical numbers into a list of numbers for each column" classname="MainTest" time="0.0"/>
+  <testcase name="test with puzzle input" classname="MainTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
