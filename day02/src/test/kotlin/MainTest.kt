@@ -21,9 +21,9 @@ class MainTest: WordSpec ({
             Position(1,1) + Position(0, -2) shouldBe Position(1,1)
         }
         "button represented by each position" {
-            Position(1,1).button shouldBe '5'
-            Position(0,0).button shouldBe '1'
-            Position(2,2).button shouldBe '9'
+            Position(1,1, layoutP1).button shouldBe '5'
+            Position(0,0, layoutP1).button shouldBe '1'
+            Position(2,2, layoutP1).button shouldBe '9'
         }
         "Sequence ULL leads to button 1" {
             "ULL".calcButton().button shouldBe '1'
