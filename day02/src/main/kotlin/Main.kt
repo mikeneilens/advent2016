@@ -10,9 +10,9 @@ fun Char.toMoves() = moves.getValue(this)
 
 data class Position( val x:Int, val y:Int, val keypad:List<String> = keypadP1) {
     operator fun plus(other:Position):Position =
-        if (copy(x = x + other.x, y = y + other.y).button != ' ') copy(x = x + other.x, y = y + other.y) else this
+        if (copy(x = x + other.x, y = y + other.y).button != '.') copy(x = x + other.x, y = y + other.y) else this
 
-    val button = if (y in keypad.indices && x in 0 until keypad[y].length) keypad[y][x] else ' '
+    val button = if (y in keypad.indices && x in 0 until keypad[y].length) keypad[y][x] else '.'
 }
 
 fun String.calcButton(start:Position = Position(1,1, keypadP1)) = map(Char::toMoves).fold(start){ position, move -> position + move}
@@ -29,7 +29,7 @@ val keypadP2 = """
        56789
        .ABC.
        ..D..
-    """.trimIndent().replace('.',' ').split("\n")
+    """.trimIndent().split("\n")
 
 fun partTwo(data:List<String>) = partOne(data ,  Position(0,2, keypadP2))
 
