@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-02-25T14:48:42" hostname="MacBook-Pro-2" time="27.709">
+  <properties/>
+  <testcase name="the integer used in the hash of abc+integer that creates a hash with five leading zeros is 3231929" classname="MainTest" time="1.493"/>
+  <testcase name="the second integer used in the hash of abc+integer that creates a hash with five leading zeros is 5017308" classname="MainTest" time="1.979"/>
+  <testcase name="sixth character of hash of abc3231929 is 1" classname="MainTest" time="0.028"/>
+  <testcase name="password for seed abc is 18f47a30" classname="MainTest" time="3.401"/>
+  <testcase name="result for puzzle input is 4543c154" classname="MainTest" time="4.163"/>
+  <testcase name="digit and position of password character using abc3231929 as the key is 5,1" classname="MainTest" time="0.004"/>
+  <testcase name="password for seed abc is 05ace8e3" classname="MainTest" time="5.431"/>
+  <testcase name="result for puzzle input is 1050cbbd" classname="MainTest" time="11.202"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
