@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2022-02-25T11:11:21" hostname="MacBook-Pro-2" time="0.157">
+  <properties/>
+  <testcase name="count each letter in a string" classname="MainTest" time="0.012"/>
+  <testcase name="find five most popular letters ina map" classname="MainTest" time="0.005"/>
+  <testcase name="encrypted name of aaaaa-bbb-z-y-x-123[abxyz] is aaaaa-bbb-z-y-x-" classname="MainTest" time="0.003"/>
+  <testcase name="sector id of aaaaa-bbb-z-y-x-123[abxyz] is 123" classname="MainTest" time="0.0"/>
+  <testcase name="checksum of aaaaa-bbb-z-y-x-123[abxyz] is abxyz" classname="MainTest" time="0.001"/>
+  <testcase name="aaaaa-bbb-z-y-x-123[abxyz] has a sector value of 123 because it is a real room" classname="MainTest" time="0.0"/>
+  <testcase name="totally-real-room-200[decoy] has a sector value of 0 because it is a real room" classname="MainTest" time="0.002"/>
+  <testcase name="result using sample data is 1514" classname="MainTest" time="0.001"/>
+  <testcase name="result using puzzle input" classname="MainTest" time="0.044"/>
+  <testcase name="next char after a is b" classname="MainTest" time="0.035"/>
+  <testcase name="next char after z is a" classname="MainTest" time="0.001"/>
+  <testcase name="letter for each offset of c is [c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,a,b]" classname="MainTest" time="0.001"/>
+  <testcase name="rotating letter q 343 times give letter v" classname="MainTest" time="0.002"/>
+  <testcase name="decoding 'qzmt-zixmtkozy-ivhz-343' is 'very encrypted name'" classname="MainTest" time="0.001"/>
+  <testcase name="result using puzzle input is 991" classname="MainTest" time="0.022"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
