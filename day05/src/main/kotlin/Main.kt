@@ -12,11 +12,15 @@ fun lowestMD5HashWithPrefix(secretKey: String, requiredPrefix:String, start:Long
 }
 fun hashedExpression(secretKey:String, number:Long): String = DigestUtils.md5Hex("$secretKey$number")
 
-fun findPassword(secretKey: String, requiredPrefix: String) =
-    (0..7).fold(listOf(0L)){result, _ ->  result + lowestMD5HashWithPrefix(secretKey,requiredPrefix,result.last() + 1, ::validExpression) }
-        .drop(1)
-        .map{sixthDigit(secretKey,it)}
-        .joinToString("")
+fun findPassword(secretKey: String, requiredPrefix: String):String {
+    var password = ""
+    var number = 0L
+    while (password.length < 8) {
+        number = lowestMD5HashWithPrefix(secretKey,requiredPrefix,number + 1, ::validExpression)
+        password += sixthDigit(secretKey,number)
+    }
+    return password
+}
 
 fun validExpression(expression:String, requiredPrefix:String) = (expression.startsWith(requiredPrefix))
 
