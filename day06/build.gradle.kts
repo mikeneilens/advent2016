@@ -14,7 +14,6 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.1.0")
     testImplementation("io.kotest:kotest-assertions-json-jvm:5.1.0")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:5.1.0")
-    implementation("commons-codec:commons-codec:1.15")
 }
 
 tasks {
