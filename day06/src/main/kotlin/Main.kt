@@ -1,9 +1,18 @@
 
+fun List<Char>.mostOrLeastPopularCharacter(mostPopular:Boolean) =
+    groupingBy { it }
+        .eachCount().toList()
+        .sortedBy { if (mostPopular) - it.second else it.second }
+        .map{it.first}.first()
 
-fun List<Char>.mostPopularCharacter() = groupingBy { it }.eachCount().toList().sortedBy { - it.second }.map{it.first}.first()
+fun List<String>.mostOrLeastPopularCharacterForColumn(column:Int, mostPopular:Boolean) =
+    map{it[column]}
+        .mostOrLeastPopularCharacter(mostPopular)
 
-fun List<String>.mostPopularCharacterForColumn(column:Int) = map{it[column]}.mostPopularCharacter()
+fun List<String>.resultingWord(mostPopular:Boolean) =
+    (0..first().lastIndex).map{column -> this.mostOrLeastPopularCharacterForColumn(column, mostPopular)}
+        .joinToString("")
 
-fun List<String>.resultingWord() = (0..first().lastIndex).map{column -> this.mostPopularCharacterForColumn(column)}.joinToString("")
+fun partOne(data:List<String>) = data.resultingWord(mostPopular = true)
 
-fun partOne(data:List<String>) = data.resultingWord()
+fun partTwo(data:List<String>) = data.resultingWord(mostPopular = false)
