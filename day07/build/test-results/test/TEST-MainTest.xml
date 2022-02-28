@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2022-02-28T21:43:50" hostname="MacBook-Pro-2" time="0.211">
+<testsuite name="MainTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2022-02-28T23:48:21" hostname="MacBook-Pro-2" time="0.251">
   <properties/>
-  <testcase name="determine if 4 character string is an ABBA sequence" classname="MainTest" time="0.011"/>
+  <testcase name="determine if 4 character string is an ABBA sequence" classname="MainTest" time="0.012"/>
   <testcase name="determine if a string of any length contaisn ABBA sequence" classname="MainTest" time="0.001"/>
-  <testcase name="hypernet sequence is a string contained between two square brackets" classname="MainTest" time="0.003"/>
+  <testcase name="hypernet sequence is a string contained between two square brackets" classname="MainTest" time="0.002"/>
   <testcase name="string abcd[bddb]xyyx with hypernetSequence removed is [abcd,xyyx]" classname="MainTest" time="0.001"/>
   <testcase name="abba[mnop]qrst supports TLS" classname="MainTest" time="0.001"/>
-  <testcase name="abcd[bddb]xyyx does not support TLS" classname="MainTest" time="0.001"/>
-  <testcase name="aaaa[qwer]tyui does not support TLS" classname="MainTest" time="0.001"/>
+  <testcase name="abcd[bddb]xyyx does not support TLS" classname="MainTest" time="0.0"/>
+  <testcase name="aaaa[qwer]tyui does not support TLS" classname="MainTest" time="0.0"/>
   <testcase name="ioxxoj[asdfgh]zxcvbn supports TLS" classname="MainTest" time="0.001"/>
-  <testcase name="result using puzzle input is 118" classname="MainTest" time="0.107"/>
+  <testcase name="result using puzzle input is 118" classname="MainTest" time="0.109"/>
   <testcase name="bab for aba of xyx is yxy" classname="MainTest" time="0.001"/>
   <testcase name="The aba sequences in abaxyzbab are aba, bab" classname="MainTest" time="0.0"/>
-  <testcase name="aba[bab]xyz supports SSL" classname="MainTest" time="0.0"/>
-  <testcase name="xyx[xyx]xyx does not support SSL" classname="MainTest" time="0.0"/>
+  <testcase name="aba[bab]xyz supports SSL" classname="MainTest" time="0.001"/>
+  <testcase name="xyx[xyx]xyx does not support SSL" classname="MainTest" time="0.001"/>
   <testcase name="aaa[kek]eke supports SSL" classname="MainTest" time="0.0"/>
-  <testcase name="zazbz[bzb]cdb supports SSL" classname="MainTest" time="0.0"/>
-  <testcase name="result using puzzle input is 260" classname="MainTest" time="0.053"/>
+  <testcase name="zazbz[bzb]cdb supports SSL" classname="MainTest" time="0.001"/>
+  <testcase name="result using puzzle input is 260" classname="MainTest" time="0.091"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

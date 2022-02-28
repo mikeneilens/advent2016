@@ -26,10 +26,8 @@ data class TLSInfo(val strings:List<String> = listOf(), val hyperNetStrings: Lis
 
 fun List<String>.addToLastString(char:Char) = if (isEmpty()) listOf("$char") else dropLast(1) + (last() + char)
 
-tailrec fun String.toTLSInfo(tlsInfo:TLSInfo = TLSInfo() ):TLSInfo = when {
-    isEmpty() -> tlsInfo
-    first() in listOf( '[',']') -> drop(1).toTLSInfo(tlsInfo.toggleOutput())
-    else -> drop(1).toTLSInfo(tlsInfo.add(first()))
+fun String.toTLSInfo() = fold(TLSInfo()){tlsInfo, char ->
+    if (char in listOf( '[',']') ) tlsInfo.toggleOutput() else tlsInfo.add(char)
 }
 
 fun String.supportsTLS():Boolean = toTLSInfo().supportsTls()
