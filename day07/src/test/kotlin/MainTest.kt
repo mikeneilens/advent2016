@@ -41,6 +41,9 @@ class MainTest: WordSpec({
         "bab for aba of xyx is yxy" {
             "xyx".toBABSequence() shouldBe "yxy"
         }
+        "The aba sequences in abaxyzbab are aba, bab" {
+            "abaxyzbab".abaSequences() shouldBe listOf("aba","bab")
+        }
         "aba[bab]xyz supports SSL" {
             "aba[bab]xyz".supportsSSL() shouldBe true
         }
