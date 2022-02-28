@@ -1,5 +1,4 @@
 import io.kotest.core.spec.style.WordSpec
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 
 class MainTest: WordSpec({
@@ -14,12 +13,12 @@ class MainTest: WordSpec({
              "abcdxyyx".containsAbbaSequence() shouldBe true
              "abcdxyx".containsAbbaSequence() shouldBe false
         }
-        "hypernet sequence is a string contained between two score brackets" {
-            val (_, hypernetSequence) = parse("abcd[bddb]xyyx")
+        "hypernet sequence is a string contained between two square brackets" {
+            val (_, hypernetSequence) = "abcd[bddb]xyyx".toTLSInfo()
             hypernetSequence shouldBe listOf("bddb")
         }
         "string abcd[bddb]xyyx with hypernetSequence removed is [abcd,xyyx]"() {
-            val (strings, _) = parse("abcd[bddb]xyyx")
+            val (strings, _) = "abcd[bddb]xyyx".toTLSInfo()
             strings shouldBe listOf("abcd", "xyyx")
         }
         "abba[mnop]qrst supports TLS" {
@@ -36,6 +35,26 @@ class MainTest: WordSpec({
         }
         "result using puzzle input is 118"{
             partOne(puzzleInput) shouldBe  118
+        }
+    })
+    "for part two" should ({
+        "bab for aba of xyx is yxy" {
+            "xyx".toBABSequence() shouldBe "yxy"
+        }
+        "aba[bab]xyz supports SSL" {
+            "aba[bab]xyz".supportsSSL() shouldBe true
+        }
+        "xyx[xyx]xyx does not support SSL" {
+            "xyx[xyx]xyx".supportsSSL() shouldBe false
+        }
+        "aaa[kek]eke supports SSL" {
+            "aaa[kek]eke".supportsSSL() shouldBe true
+        }
+        "zazbz[bzb]cdb supports SSL" {
+            "zazbz[bzb]cdb".supportsSSL() shouldBe true
+        }
+        "result using puzzle input is 260"{
+            partTwo(puzzleInput) shouldBe  260
         }
     })
 })
