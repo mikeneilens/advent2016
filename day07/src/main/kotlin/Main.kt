@@ -3,7 +3,7 @@ fun String.isAbbaSequence() =  length == 4 && first() == last() && this[1] == th
 fun String.containsAbbaSequence() = windowed(4,1).any(String::isAbbaSequence)
 
 data class TLSInfo(val strings:List<String> = listOf(""), val hyperNetStrings: List<String> = listOf(),val addToHyperNet:Boolean = false) {
-    fun addToStringsOrHypernet(s:Char) = if (addToHyperNet) addToHypernet(s) else addToString(s)
+    fun add(s:Char) = if (addToHyperNet) addToHypernet(s) else addToString(s)
 
     fun toggleOutput() = if (addToHyperNet) TLSInfo(strings + "", hyperNetStrings, false) else  TLSInfo(strings, hyperNetStrings + "", true)
 
@@ -15,12 +15,10 @@ data class TLSInfo(val strings:List<String> = listOf(""), val hyperNetStrings: L
 
 fun List<String>.addToLastElement(s:Char) = dropLast(1) + (last() + s)
 
-fun parse(data:String, tlsInfo:TLSInfo = TLSInfo() ):TLSInfo {
-    if (data.isEmpty()) return tlsInfo
-    return when (val firstCharacter = data.first()) {
-        '[',']' -> parse(data.drop(1), tlsInfo.toggleOutput() )
-        else -> parse(data.drop(1), tlsInfo.addToStringsOrHypernet(firstCharacter) )
-    }
+fun parse(data:String, tlsInfo:TLSInfo = TLSInfo() ):TLSInfo = when {
+    data.isEmpty() -> tlsInfo
+    data.first() == '[' || data.first() == ']' -> parse(data.drop(1), tlsInfo.toggleOutput())
+    else -> parse(data.drop(1), tlsInfo.add(data.first()))
 }
 
 fun String.supportsTLS():Boolean = parse(this).supportsTls()
