@@ -22,16 +22,19 @@ data class Marker(val repeats:Long, val tree:HasLength)
 fun String.toTree(isPartTwo:Boolean = false):HasLength {
     val (positionOfMarkerStart, positionOfMarkerEnd) = startAndEndOfMarker()
     if (positionOfMarkerStart < 0) return Leaf(this)
+    val (marker, markerLength) = getMarkerAndLength(positionOfMarkerStart, positionOfMarkerEnd, isPartTwo)
     val leadingString = take(positionOfMarkerStart)
-    val (markerLength, markerRepeats) = toMarkerText(positionOfMarkerStart ,positionOfMarkerEnd).toMarkerRules()
-    val marker = if (!isPartTwo)
-        Marker(markerRepeats, Leaf(stringForMarker(positionOfMarkerEnd, markerLength)))
-    else
-        Marker(markerRepeats, stringForMarker(positionOfMarkerEnd, markerLength).toTree(isPartTwo))
-    val remainingString = drop(positionOfMarkerEnd + markerLength + 1 )
-    if (remainingString.isEmpty()) return LastTree(leadingString, marker)
-    val remainingTree = remainingString.toTree(isPartTwo)
+    if (positionOfMarkerEnd + markerLength + 1 >= length) return LastTree(leadingString, marker)
+    val remainingTree = drop(positionOfMarkerEnd + markerLength + 1 ).toTree(isPartTwo)
     return Tree(leadingString, marker, remainingTree)
+}
+
+private fun String.getMarkerAndLength(positionOfMarkerStart: Int, positionOfMarkerEnd: Int, isPartTwo: Boolean):Pair<Marker, Int> {
+    val (markerLength, markerRepeats) = toMarkerText(positionOfMarkerStart, positionOfMarkerEnd).toMarkerRules()
+    return if (!isPartTwo)
+        Pair(Marker(markerRepeats, Leaf(stringForMarker(positionOfMarkerEnd, markerLength))), markerLength)
+    else
+        Pair(Marker(markerRepeats, stringForMarker(positionOfMarkerEnd, markerLength).toTree(isPartTwo)), markerLength)
 }
 
 private fun String.startAndEndOfMarker() = Pair(indexOfFirst { it == '(' }, indexOfFirst {it == ')'})
