@@ -4,29 +4,30 @@ import io.kotest.matchers.shouldBe
 class MainTest: WordSpec({
     "For part one " should ({
         "a string with no markers returns a tree which is the length of the string" {
+            "ADVENT".toTree() shouldBe Leaf("ADVENT")
             "ADVENT".toTree().length() shouldBe 6L
         }
         "a string with one marker prefixed by a string and no string after the marker returns a tree with a marker" {
             val tree = "A(1x5)B".toTree()
-            val expectedTree = Tree("A",Marker(5,Tree("B")), null)
+            val expectedTree = LastTree("A",Marker(5,Leaf("B")))
             tree shouldBe expectedTree
             tree.length() shouldBe 6L
         }
         "a string with one marker prefixed by a string and a string after the marker returns a tree with a marker and an additional tree" {
             val tree = "A(1x5)BC".toTree()
-            val expectedTree = Tree("A",Marker(5,Tree("B")), Tree("C"))
+            val expectedTree = Tree("A",Marker(5,Leaf("B")), Leaf("C"))
             tree shouldBe expectedTree
             tree.length() shouldBe 7L
         }
         "a string with two markers returns" {
             val tree = "A(2x2)BCD(2x2)EFG".toTree()
-            val expectedTree = Tree("A", Marker(2, Tree("BC")), Tree("D", Marker(2, Tree("EF")), Tree("G")))
+            val expectedTree = Tree("A", Marker(2, Leaf("BC")), Tree("D", Marker(2, Leaf("EF")), Leaf("G")))
             tree shouldBe expectedTree
             tree.length() shouldBe 11L
         }
         "a string with two markers were one marker is inside the string of another returns a tree with one marker" {
             val tree = "(6x1)(1x3)A".toTree()
-            val expectedTree = Tree("",Marker(1,Tree("(1x3)A")))
+            val expectedTree = LastTree("",Marker(1,Leaf("(1x3)A")))
             tree shouldBe expectedTree
             tree.length() shouldBe 6L
         }

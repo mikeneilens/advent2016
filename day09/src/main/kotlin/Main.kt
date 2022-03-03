@@ -1,24 +1,36 @@
-data class Tree (val string:String, val marker:Marker? = null, val remainingTree:Tree? = null ) {
-    fun length():Long {
-        val markerLength = if (marker != null) marker.repeats * marker.tree.length()  else 0L
-        val remainingTreeLength = remainingTree?.length() ?: 0L
-        return string.length + markerLength + remainingTreeLength
+interface HasLength {
+    fun length():Long
+}
+
+data class Tree (val string:String, val marker:Marker, val remainingTree:HasLength  ):HasLength {
+    override fun length():Long {
+        val remainingTreeLength = remainingTree.length()
+        return string.length + marker.repeats * marker.tree.length() + remainingTreeLength
     }
 }
 
-data class Marker(val repeats:Long, val tree:Tree)
+data class LastTree(val string:String, val marker:Marker):HasLength {
+    override fun length() = string.length.toLong() + marker.repeats * marker.tree.length()
+}
 
-fun String.toTree(isPartTwo:Boolean = false):Tree {
+data class Leaf(val string:String):HasLength {
+    override fun length() = string.length.toLong()
+}
+
+data class Marker(val repeats:Long, val tree:HasLength)
+
+fun String.toTree(isPartTwo:Boolean = false):HasLength {
     val (positionOfMarkerStart, positionOfMarkerEnd) = startAndEndOfMarker()
-    if (positionOfMarkerStart < 0) return Tree(this)
+    if (positionOfMarkerStart < 0) return Leaf(this)
     val leadingString = take(positionOfMarkerStart)
     val (markerLength, markerRepeats) = toMarkerText(positionOfMarkerStart ,positionOfMarkerEnd).toMarkerRules()
     val marker = if (!isPartTwo)
-        Marker(markerRepeats, Tree(stringForMarker(positionOfMarkerEnd, markerLength)))
+        Marker(markerRepeats, Leaf(stringForMarker(positionOfMarkerEnd, markerLength)))
     else
         Marker(markerRepeats, stringForMarker(positionOfMarkerEnd, markerLength).toTree(isPartTwo))
     val remainingString = drop(positionOfMarkerEnd + markerLength + 1 )
-    val remainingTree = if (remainingString.isNotEmpty()) remainingString.toTree(isPartTwo) else null
+    if (remainingString.isEmpty()) return LastTree(leadingString, marker)
+    val remainingTree = remainingString.toTree(isPartTwo)
     return Tree(leadingString, marker, remainingTree)
 }
 
