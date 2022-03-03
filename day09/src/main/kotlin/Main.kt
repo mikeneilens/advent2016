@@ -1,4 +1,3 @@
-
 data class Tree (val string:String, val marker:Marker? = null, val remainingTree:Tree? = null ) {
     fun length():Long {
         val markerLength = if (marker != null) marker.repeats * marker.tree.length()  else 0L
@@ -7,29 +6,29 @@ data class Tree (val string:String, val marker:Marker? = null, val remainingTree
     }
 }
 
-fun String.toTree(partTwo:Boolean = false):Tree {
+data class Marker(val repeats:Long, val tree:Tree)
+
+fun String.toTree(isPartTwo:Boolean = false):Tree {
     val (positionOfMarkerStart, positionOfMarkerEnd) = startAndEndOfMarker()
     if (positionOfMarkerStart < 0) return Tree(this)
     val leadingString = take(positionOfMarkerStart)
-    val (markerLength, markerRepeats) = markerText(positionOfMarkerStart ,positionOfMarkerEnd).toMarkerRules()
-    val marker = if (!partTwo)
-        Marker(markerRepeats, Tree(markerString(positionOfMarkerEnd, markerLength)))
+    val (markerLength, markerRepeats) = toMarkerText(positionOfMarkerStart ,positionOfMarkerEnd).toMarkerRules()
+    val marker = if (!isPartTwo)
+        Marker(markerRepeats, Tree(stringForMarker(positionOfMarkerEnd, markerLength)))
     else
-        Marker(markerRepeats, markerString(positionOfMarkerEnd, markerLength).toTree(partTwo))
+        Marker(markerRepeats, stringForMarker(positionOfMarkerEnd, markerLength).toTree(isPartTwo))
     val remainingString = drop(positionOfMarkerEnd + markerLength + 1 )
-    val remainingTree = if (remainingString.isNotEmpty()) remainingString.toTree(partTwo) else null
+    val remainingTree = if (remainingString.isNotEmpty()) remainingString.toTree(isPartTwo) else null
     return Tree(leadingString, marker, remainingTree)
 }
 
 private fun String.startAndEndOfMarker() = Pair(indexOfFirst { it == '(' }, indexOfFirst {it == ')'})
 
-private fun String.markerText(positionOfMarkerStart:Int, positionOfMarkerEnd:Int) = substring((positionOfMarkerStart + 1) until positionOfMarkerEnd)
+private fun String.toMarkerText(positionOfMarkerStart:Int, positionOfMarkerEnd:Int) = substring((positionOfMarkerStart + 1) until positionOfMarkerEnd)
 private fun String.toMarkerRules() = Pair(split("x")[0].toInt(), split("x")[1].toLong() )
 
-private fun String.markerString(indexOfMarkerEnd: Int, markerLength: Int) = substring((indexOfMarkerEnd + 1)..minOf(indexOfMarkerEnd + markerLength, lastIndex))
-
-data class Marker(val repeats:Long, val tree:Tree)
+private fun String.stringForMarker(indexOfMarkerEnd: Int, markerLength: Int) = substring((indexOfMarkerEnd + 1)..minOf(indexOfMarkerEnd + markerLength, lastIndex))
 
 fun partOne(data:String) = data.toTree().length()
 
-fun partTwo(data:String) = data.toTree(partTwo = true).length()
+fun partTwo(data:String) = data.toTree(isPartTwo = true).length()
