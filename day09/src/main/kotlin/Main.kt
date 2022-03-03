@@ -20,8 +20,8 @@ data class Leaf(val string:String):HasLength {
 data class Marker(val repeats:Long, val tree:HasLength)
 
 fun String.toTree(isPartTwo:Boolean = false):HasLength {
+    if (!contains("(")) return Leaf(this)
     val (positionOfMarkerStart, positionOfMarkerEnd) = startAndEndOfMarker()
-    if (positionOfMarkerStart < 0) return Leaf(this)
     val (marker, markerLength) = getMarkerAndLength(positionOfMarkerStart, positionOfMarkerEnd, isPartTwo)
     val leadingString = take(positionOfMarkerStart)
     if (positionOfMarkerEnd + markerLength + 1 >= length) return LastTree(leadingString, marker)

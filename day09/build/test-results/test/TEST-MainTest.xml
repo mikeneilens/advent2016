@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2022-03-03T15:40:19" hostname="MacBook-Pro-2" time="0.06">
+<testsuite name="MainTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2022-03-03T16:23:34" hostname="MacBook-Pro-2" time="0.063">
   <properties/>
-  <testcase name="a string with no markers returns a tree which is the length of the string" classname="MainTest" time="0.016"/>
-  <testcase name="a string with one marker prefixed by a string and no string after the marker returns a tree with a marker" classname="MainTest" time="0.005"/>
+  <testcase name="a string with no markers returns a tree which is the length of the string" classname="MainTest" time="0.015"/>
+  <testcase name="a string with one marker prefixed by a string and no string after the marker returns a tree with a marker" classname="MainTest" time="0.004"/>
   <testcase name="a string with one marker prefixed by a string and a string after the marker returns a tree with a marker and an additional tree" classname="MainTest" time="0.002"/>
   <testcase name="a string with two markers returns" classname="MainTest" time="0.001"/>
-  <testcase name="a string with two markers were one marker is inside the string of another returns a tree with one marker" classname="MainTest" time="0.001"/>
-  <testcase name="decompressed length of several compenents built from X(8x2)(3x3)ABCY is 18" classname="MainTest" time="0.001"/>
+  <testcase name="a string with two markers were one marker is inside the string of another returns a tree with one marker" classname="MainTest" time="0.0"/>
+  <testcase name="decompressed length of several compenents built from X(8x2)(3x3)ABCY is 18" classname="MainTest" time="0.0"/>
   <testcase name="part one using puzzle input has a decompresesd length of 110346" classname="MainTest" time="0.001"/>
   <testcase name="(3x3)XYZ is a tree of length 9" classname="MainTest" time="0.001"/>
-  <testcase name="X(8x2)(3x3)ABCY is a tree of length 20" classname="MainTest" time="0.0"/>
+  <testcase name="X(8x2)(3x3)ABCY is a tree of length 20" classname="MainTest" time="0.001"/>
   <testcase name="(27x12)(20x12)(13x14)(7x10)(1x12)A creates a tree of length 241920" classname="MainTest" time="0.0"/>
-  <testcase name="(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN creates a tree of length 445" classname="MainTest" time="0.0"/>
-  <testcase name="part two using puzzle input has a decompresesd length of 10774309173" classname="MainTest" time="0.008"/>
+  <testcase name="(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN creates a tree of length 445" classname="MainTest" time="0.001"/>
+  <testcase name="part two using puzzle input has a decompresesd length of 10774309173" classname="MainTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
