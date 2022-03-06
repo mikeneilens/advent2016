@@ -48,7 +48,7 @@ fun List<String>.createBots(bots: Bots, bins: Bins) {
     forEach { string ->
         if (string.startsWith("bot ")) {
             val fromBotNumber = string.fromBot()
-            val bot = string.toBot(bots, bins)
+            val bot = string.createBot(bots, bins)
             bots[fromBotNumber] = bot
         }
     }
@@ -64,12 +64,12 @@ fun List<String>.assignValues(bots: Bots) {
     }
 }
 
-fun String.toBot(bots: Bots, bins: Bins ):Bot {
-    val lowToType = if (split(" ")[5] == "output") ReceiverType.Bin else ReceiverType.Bot
-    val lowToNumber = split(" ")[6].toInt()
-    val highToType = if (split(" ")[10] == "output") ReceiverType.Bin else ReceiverType.Bot
-    val highToNumber = split(" ")[11].toInt()
-    return Bot(mutableListOf(), Receiver(lowToType, lowToNumber), Receiver(highToType, highToNumber), bots, bins)
+fun String.createBot(bots: Bots, bins: Bins )= Bot(mutableListOf(), createReceiver(5), createReceiver(10), bots, bins)
+
+fun String.createReceiver(offset:Int):Receiver {
+    val receiverType = if (split(" ")[offset] == "output") ReceiverType.Bin else ReceiverType.Bot
+    val number = split(" ")[offset +1 ].toInt()
+    return Receiver(receiverType, number)
 }
 
 fun String.fromBot() = removePrefix("bot ").split(" ")[0].toInt()

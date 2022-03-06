@@ -17,28 +17,28 @@ class MainTest: WordSpec( {
         """.trimIndent().split("\n")
 
         "convert a bot instruction into a bot when both receivers are bots" {
-            val bot = "bot 135 gives low to bot 27 and high to bot 166".toBot(bots, bins)
+            val bot = "bot 135 gives low to bot 27 and high to bot 166".createBot(bots, bins)
             bot.lowReceiver.type shouldBe ReceiverType.Bot
             bot.lowReceiver.number shouldBe 27
             bot.highReceiver.type shouldBe ReceiverType.Bot
             bot.highReceiver.number shouldBe 166
         }
         "convert a bot instruction into a bot when both receivers are bins" {
-            val bot = "bot 207 gives low to output 16 and high to output 8".toBot(bots, bins)
+            val bot = "bot 207 gives low to output 16 and high to output 8".createBot(bots, bins)
             bot.lowReceiver.type shouldBe ReceiverType.Bin
             bot.lowReceiver.number shouldBe 16
             bot.highReceiver.type shouldBe ReceiverType.Bin
             bot.highReceiver.number shouldBe 8
         }
         "convert a bot instruction into a bot when low receiver is a bot high receiver is a bin" {
-            val bot = "bot 208 gives low to bot 16 and high to output 8".toBot(bots, bins)
+            val bot = "bot 208 gives low to bot 16 and high to output 8".createBot(bots, bins)
             bot.lowReceiver.type shouldBe ReceiverType.Bot
             bot.lowReceiver.number shouldBe 16
             bot.highReceiver.type shouldBe ReceiverType.Bin
             bot.highReceiver.number shouldBe 8
         }
         "convert a bot instruction into a bot when low receiver is a bin high receiver is a bot" {
-            val bot = "bot 209 gives low to output 16 and high to bin 8".toBot(bots, bins)
+            val bot = "bot 209 gives low to output 16 and high to bin 8".createBot(bots, bins)
             bot.lowReceiver.type shouldBe ReceiverType.Bin
             bot.lowReceiver.number shouldBe 16
             bot.highReceiver.type shouldBe ReceiverType.Bot
