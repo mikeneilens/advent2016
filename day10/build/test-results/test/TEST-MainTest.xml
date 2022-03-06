@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-03-06T14:23:48" hostname="MacBook-Pro-2" time="0.05">
+<testsuite name="MainTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-03-06T14:26:06" hostname="MacBook-Pro-2" time="0.051">
   <properties/>
-  <testcase name="convert a bot instruction into a bot when both receivers are bots" classname="MainTest" time="0.011"/>
+  <testcase name="convert a bot instruction into a bot when both receivers are bots" classname="MainTest" time="0.01"/>
   <testcase name="convert a bot instruction into a bot when both receivers are bins" classname="MainTest" time="0.001"/>
   <testcase name="convert a bot instruction into a bot when low receiver is a bot high receiver is a bin" classname="MainTest" time="0.001"/>
-  <testcase name="convert a bot instruction into a bot when low receiver is a bin high receiver is a bot" classname="MainTest" time="0.0"/>
-  <testcase name="convert sample instructions into bots" classname="MainTest" time="0.006"/>
+  <testcase name="convert a bot instruction into a bot when low receiver is a bin high receiver is a bot" classname="MainTest" time="0.001"/>
+  <testcase name="convert sample instructions into bots" classname="MainTest" time="0.008"/>
   <testcase name="process instructions using sample data" classname="MainTest" time="0.002"/>
   <testcase name="find part one answer using sample data is 2" classname="MainTest" time="0.002"/>
-  <testcase name="find part one answer using puzzleInput is 93" classname="MainTest" time="0.005"/>
-  <testcase name="find answer using puzzle Input is 47101" classname="MainTest" time="0.003"/>
+  <testcase name="find part one answer using puzzleInput is 93" classname="MainTest" time="0.007"/>
+  <testcase name="find answer using puzzle Input is 47101" classname="MainTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

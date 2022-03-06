@@ -41,7 +41,7 @@ class Bot(val microchips:MutableList<Int>, val lowReceiver:Receiver, val highRec
 }
 
 data class Bin(val microchips:MutableList<Int>) {
-    val addChip = { chip: Int -> microchips.add(chip); Unit}
+    fun addChip (chip: Int) = microchips.add(chip)
 }
 
 fun List<String>.createBots(bots: Bots, bins: Bins) {
