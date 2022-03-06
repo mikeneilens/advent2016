@@ -47,9 +47,9 @@ data class Bin(val microchips:MutableList<Int>) {
 fun List<String>.createBots(bots: Bots, bins: Bins) {
     forEach { string ->
         if (string.startsWith("bot ")) {
-            val fromBotNumber = string.fromBot()
+            val botNumber = string.removePrefix("bot ").split(" ")[0].toInt()
             val bot = string.createBot(bots, bins)
-            bots[fromBotNumber] = bot
+            bots[botNumber] = bot
         }
     }
 }
@@ -71,8 +71,6 @@ fun String.createReceiver(offset:Int):Receiver {
     val number = split(" ")[offset +1 ].toInt()
     return Receiver(receiverType, number)
 }
-
-fun String.fromBot() = removePrefix("bot ").split(" ")[0].toInt()
 
 fun processInstructions(data:List<String>):Pair<Bots, Bins> {
     val bots = mutableMapOf<Int, Bot>()
